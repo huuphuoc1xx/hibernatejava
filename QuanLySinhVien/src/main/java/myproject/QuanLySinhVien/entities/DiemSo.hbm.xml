@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 17, 2020 9:35:43 AM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="gsMg5DbNgQ" dynamic-insert="false" dynamic-update="false" mutable="true" name="myproject.QuanLySinhVien.entities.DiemSo" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="DiemSo">
+        <composite-id class="myproject.QuanLySinhVien.entities.DiemSoId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="maMh" type="string">
+                <column length="10" name="MaMH"/>
+            </key-property>
+            <key-property name="mssv" type="int">
+                <column name="MSSV"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="myproject.QuanLySinhVien.entities.HocSinh" embed-xml="true" fetch="select" insert="false" name="hocSinh" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="MSSV" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="myproject.QuanLySinhVien.entities.MonHoc" embed-xml="true" fetch="select" insert="false" name="monHoc" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column length="10" name="MaMH" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="diemGk" optimistic-lock="true" type="java.lang.Float" unique="false">
+            <column name="DiemGK" precision="12" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="diemCk" optimistic-lock="true" type="java.lang.Float" unique="false">
+            <column name="DiemCK" precision="12" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="diemKhac" optimistic-lock="true" type="java.lang.Float" unique="false">
+            <column name="DiemKhac" precision="12" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="diemTong" optimistic-lock="true" type="java.lang.Float" unique="false">
+            <column name="DiemTong" precision="12" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>

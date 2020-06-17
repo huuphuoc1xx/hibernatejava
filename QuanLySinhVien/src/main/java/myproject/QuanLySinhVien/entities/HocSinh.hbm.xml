@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 17, 2020 9:35:43 AM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="gsMg5DbNgQ" dynamic-insert="false" dynamic-update="false" mutable="true" name="myproject.QuanLySinhVien.entities.HocSinh" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="HocSinh">
+        <id name="mssv" type="int">
+            <column name="MSSV"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="myproject.QuanLySinhVien.entities.LopHoc" embed-xml="true" fetch="select" insert="true" name="lopHoc" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column length="10" name="MaLop" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="hoTen" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="HoTen" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="gioiTinh" optimistic-lock="true" type="boolean" unique="false">
+            <column name="GioiTinh" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="cmnd" optimistic-lock="true" type="int" unique="false">
+            <column name="CMND" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="diemSos" optimistic-lock="true" sort="unsorted" table="DiemSo">
+            <key on-delete="noaction">
+                <column name="MSSV" not-null="true"/>
+            </key>
+            <one-to-many class="myproject.QuanLySinhVien.entities.DiemSo" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="phucKhaos" optimistic-lock="true" sort="unsorted" table="PhucKhao">
+            <key on-delete="noaction">
+                <column name="MSSV" not-null="true"/>
+            </key>
+            <one-to-many class="myproject.QuanLySinhVien.entities.PhucKhao" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 17, 2020 9:35:43 AM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="gsMg5DbNgQ" dynamic-insert="false" dynamic-update="false" mutable="true" name="myproject.QuanLySinhVien.entities.PhucKhao" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="PhucKhao">
+        <composite-id class="myproject.QuanLySinhVien.entities.PhucKhaoId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="mssv" type="int">
+                <column name="MSSV"/>
+            </key-property>
+            <key-property name="maMh" type="string">
+                <column length="10" name="MaMH"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="myproject.QuanLySinhVien.entities.HocSinh" embed-xml="true" fetch="select" insert="false" name="hocSinh" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="MSSV" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="myproject.QuanLySinhVien.entities.MonHoc" embed-xml="true" fetch="select" insert="false" name="monHoc" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column length="10" name="MaMH" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="cotDiem" optimistic-lock="true" type="string" unique="false">
+            <column length="8" name="CotDiem" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="diemMongMuon" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="DiemMongMuon"/>
+        </property>
+        <property generated="never" lazy="false" name="lyDo" optimistic-lock="true" type="string" unique="false">
+            <column name="LyDo"/>
+        </property>
+        <property generated="never" lazy="false" name="ketQua" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="KetQua" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

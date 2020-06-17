@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">0ROocuuJ32</property>
+  <property name="hibernate.connection.url">jdbc:mysql://remotemysql.com:3306/gsMg5DbNgQ</property>
+  <property name="hibernate.connection.username">gsMg5DbNgQ</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <mapping class="myproject.QuanLySinhVien.entities.DiemSo"/>
+  <mapping class="myproject.QuanLySinhVien.entities.HocSinh"/>
+  <mapping class="myproject.QuanLySinhVien.entities.LopHoc"/>
+  <mapping class="myproject.QuanLySinhVien.entities.MonHoc"/>
+  <mapping class="myproject.QuanLySinhVien.entities.MonHoc_LopHoc"/>
+  <mapping class="myproject.QuanLySinhVien.entities.PhucKhao"/>
+ </session-factory>
+</hibernate-configuration>
