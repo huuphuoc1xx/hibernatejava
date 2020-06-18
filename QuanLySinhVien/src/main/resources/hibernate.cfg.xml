@@ -2,17 +2,25 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory name="">
+ <session-factory>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-  <property name="hibernate.connection.password">0ROocuuJ32</property>
-  <property name="hibernate.connection.url">jdbc:mysql://remotemysql.com:3306/gsMg5DbNgQ</property>
-  <property name="hibernate.connection.username">gsMg5DbNgQ</property>
+  <property name="hibernate.connection.password">1234</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/QuanLySinhVien</property>
+  <property name="hibernate.connection.username">root</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+   <property name="hibernate.connection.characterEncoding">utf8</property>
   <mapping class="myproject.QuanLySinhVien.entities.DiemSo"/>
   <mapping class="myproject.QuanLySinhVien.entities.HocSinh"/>
   <mapping class="myproject.QuanLySinhVien.entities.LopHoc"/>
   <mapping class="myproject.QuanLySinhVien.entities.MonHoc"/>
-  <mapping class="myproject.QuanLySinhVien.entities.MonHoc_LopHoc"/>
+  <mapping class="myproject.QuanLySinhVien.entities.ThoiKhoaBieu"/>
   <mapping class="myproject.QuanLySinhVien.entities.PhucKhao"/>
+  
+  <mapping resource="DiemSo.hbm.xml"/>
+  <mapping resource="HocSinh.hbm.xml"/>
+  <mapping resource="LopHoc.hbm.xml"/>
+  <mapping resource="MonHoc.hbm.xml"/>
+  <mapping resource="PhucKhao.hbm.xml"/>
+  <mapping resource="ThoiKhoaBieu.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
