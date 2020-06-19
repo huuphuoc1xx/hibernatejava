@@ -23,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Test extends JFrame {
 
@@ -78,6 +80,11 @@ public class Test extends JFrame {
 		String[][] data = {{}};
 		DefaultTableModel modelEmpty = new DefaultTableModel(data, columnNames);
 		final JTable table = new JTable(modelEmpty);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		JScrollPane scrollPane = new JScrollPane(table);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 31, SpringLayout.SOUTH, lblNewLabel_2);
 		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 0, SpringLayout.WEST, contentPane);

@@ -33,11 +33,11 @@ import javax.swing.GroupLayout.Alignment;
 @SuppressWarnings("serial")
 public class ThemSinhVien extends JFrame {
 
-	private JPanel cmnd;
+	private JPanel mainPanel;
 	private JTextField mssv;
 	private JTextField name;
 	private JLabel lblNewLabel_1;
-	private JTextField Cmnd;
+	private JTextField cmnd;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
 	private JRadioButton namRadioButton;
@@ -50,9 +50,9 @@ public class ThemSinhVien extends JFrame {
 	public ThemSinhVien() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		cmnd = new JPanel();
-		cmnd.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(cmnd);
+		mainPanel = new JPanel();
+		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(mainPanel);
 
 		JLabel lblNewLabel = new JLabel("MSSV");
 
@@ -74,9 +74,9 @@ public class ThemSinhVien extends JFrame {
 
 		lblNewLabel_2 = new JLabel("CMND");
 
-		Cmnd = new JTextField();
-		Cmnd.setText("");
-		Cmnd.setColumns(10);
+		cmnd = new JTextField();
+		cmnd.setText("");
+		cmnd.setColumns(10);
 
 		ButtonGroup gioiTinh = new ButtonGroup();
 
@@ -92,7 +92,7 @@ public class ThemSinhVien extends JFrame {
 				try {
 				HocSinh hs = new HocSinh();
 				hs.setMssv(Integer.parseInt(mssv.getText()));
-				hs.setCmnd(Integer.parseInt(Cmnd.getText()));
+				hs.setCmnd(Integer.parseInt(cmnd.getText()));
 				hs.setGioiTinh(namRadioButton.isSelected());
 				hs.setMaLop(maLop.getText());
 				hs.setHoTen(name.getText());
@@ -120,7 +120,7 @@ public class ThemSinhVien extends JFrame {
 				dispose();
 			}
 		});
-		GroupLayout gl_cmnd = new GroupLayout(cmnd);
+		GroupLayout gl_cmnd = new GroupLayout(mainPanel);
 		gl_cmnd.setHorizontalGroup(
 			gl_cmnd.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_cmnd.createSequentialGroup()
@@ -134,7 +134,7 @@ public class ThemSinhVien extends JFrame {
 							.addGap(56)
 							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(Cmnd, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE))
+							.addComponent(cmnd, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_cmnd.createSequentialGroup()
 							.addGap(56)
 							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
@@ -179,7 +179,7 @@ public class ThemSinhVien extends JFrame {
 							.addComponent(lblNewLabel_4)))
 					.addGap(6)
 					.addGroup(gl_cmnd.createParallelGroup(Alignment.LEADING)
-						.addComponent(Cmnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cmnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_cmnd.createSequentialGroup()
 							.addGap(3)
 							.addComponent(lblNewLabel_2)))
@@ -197,7 +197,7 @@ public class ThemSinhVien extends JFrame {
 							.addGap(35)
 							.addComponent(lblNewLabel_3))))
 		);
-		cmnd.setLayout(gl_cmnd);
+		mainPanel.setLayout(gl_cmnd);
 
 	}
 

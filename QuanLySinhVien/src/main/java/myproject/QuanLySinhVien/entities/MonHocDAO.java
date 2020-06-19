@@ -26,4 +26,22 @@ public class MonHocDAO {
 		
 		return true;
 	}
+	
+
+	public static List<MonHoc> getByClass(String Lop){
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		List<MonHoc> ds = null;
+		try {
+			String hql = "select mh from ThoiKhoaBieu tkb left join MonHoc mh on tkb.id.maMon=mh.maMon where MaLop=:Lop";
+			ds = session.createQuery(hql).setParameter("Lop", Lop).getResultList();
+		} catch (HibernateException ex) {
+			System.err.println(ex);
+		} finally {
+			session.close();
+		}
+
+		return ds;
+	}
+	
+
 }

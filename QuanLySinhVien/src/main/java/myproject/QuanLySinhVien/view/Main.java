@@ -25,6 +25,9 @@ import javax.swing.JMenu;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import myproject.QuanLySinhVien.entities.DiemSo;
+import myproject.QuanLySinhVien.entities.DiemSoDAO;
+import myproject.QuanLySinhVien.entities.DiemSoId;
 import myproject.QuanLySinhVien.entities.HocSinh;
 import myproject.QuanLySinhVien.entities.HocSinhDAO;
 import myproject.QuanLySinhVien.entities.LopHoc;
@@ -43,11 +46,11 @@ import java.awt.event.ActionListener;
 public class Main extends JFrame {
 
 
-	public Main() {
+	public Main(JPanel panel) {
 		
 		Toolkit toolkit=Toolkit.getDefaultToolkit();;
 		
-		setSize(toolkit.getScreenSize());
+		setSize((int)toolkit.getScreenSize().getWidth()/2,(int)toolkit.getScreenSize().getHeight()/2);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -59,7 +62,7 @@ public class Main extends JFrame {
         final JPanel mainPanel=new JPanel();
         JPanel contentPanel =new JPanel();
 		
-		JMenuItem importSV = new JMenuItem("Import Student from file");
+		JMenuItem importSV = new JMenuItem("Import Sinh Viên from file");
 		importSV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooseFile = new JFileChooser();
@@ -108,18 +111,18 @@ public class Main extends JFrame {
 		importSV.setHorizontalAlignment(SwingConstants.LEFT);
 		mainMenu.add(importSV);
 		
-		JMenuItem addSV = new JMenuItem("Add Student");
+		JMenuItem addSV = new JMenuItem("Thêm Sinh Viên");
 		addSV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame addStudent=new ThemSinhVien();
-				addStudent.setVisible(true);
+				addPopup(addStudent, null);
 			}
 		});
 		
 		addSV.setHorizontalAlignment(SwingConstants.LEFT);
 		mainMenu.add(addSV);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Import Schedule from file");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Import Thời Khoá Biểu from file");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooseFile = new JFileChooser();
@@ -136,6 +139,8 @@ public class Main extends JFrame {
 					br.readLine();
 					List<MonHoc> list = new ArrayList<>();
 					List<ThoiKhoaBieu> tkb=new ArrayList<>();
+					List<DiemSo> ds=new ArrayList<>();
+					List<HocSinh> lisths=HocSinhDAO.getByClass(maLop);
 					while ((line = br.readLine())!=null) {
 						String UTF8Str = new String(line.getBytes(),"UTF-8");
 						String[] s = UTF8Str.split(",");
@@ -144,11 +149,15 @@ public class Main extends JFrame {
 						String tenMon = s[2];
 						String PhongHoc =s[3];
 						list.add(new MonHoc(maMon,tenMon, PhongHoc));
+						for(HocSinh hs:lisths) {
+							ds.add(new DiemSo(new DiemSoId(maMon,hs.getMssv())));
+						}
 						tkb.add(new ThoiKhoaBieu(new ThoiKhoaBieuId(maMon,maLop)));
 					}
 					LopHoc lopHoc=new LopHoc(maLop);
 					
-					boolean check = LopHocDAO.addClass(lopHoc)&&MonHocDAO.addSubject(list)&&ThoiKhoaBieuDAO.addSchedule(tkb);
+					boolean check = LopHocDAO.addClass(lopHoc)&&MonHocDAO.addSubject(list)&&ThoiKhoaBieuDAO.addSchedule(tkb)
+							&&DiemSoDAO.addScore(ds);
 					br.close();
 					if (check) {
 						JOptionPane.showMessageDialog(getContentPane(), "Successful!");
@@ -164,6 +173,55 @@ public class Main extends JFrame {
 			}
 		});
 		mainMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Import Bảng Điểm from file");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooseFile = new JFileChooser();
+				chooseFile.addChoosableFileFilter(new FileNameExtensionFilter("*.csv", "csv"));
+				chooseFile.showOpenDialog(null);
+				File f = chooseFile.getSelectedFile();
+				if(f.canRead())
+				try {
+					BufferedReader br =new BufferedReader(new FileReader(f));
+					String line;
+					line = br.readLine();
+					String[] value = line.split(",")[0].split("-");
+					String maLop = value[0];
+					String maMon = value[1];
+					br.readLine();
+					List<DiemSo> list = new ArrayList<>();
+					while ((line = br.readLine())!=null) {
+						String UTF8Str = new String(line.getBytes(),"UTF-8");
+						String[] s = UTF8Str.split(",");
+
+						int mssv=Integer.parseInt(s[1]);
+						String ten = s[2];
+						float diemGK=Float.parseFloat(s[3]);
+						float diemCK=Float.parseFloat(s[4]);
+						float diemKhac=Float.parseFloat(s[5]);
+						float diemTong=Float.parseFloat(s[6]);
+						list.add(new DiemSo(new DiemSoId(maMon,mssv),diemGK, diemCK,diemKhac,diemTong));
+					}
+					LopHoc lopHoc=new LopHoc(maLop);
+					
+					boolean check = LopHocDAO.addClass(lopHoc)&&DiemSoDAO.addScore(list)&&
+							ThoiKhoaBieuDAO.addSchedule(new ThoiKhoaBieu(new ThoiKhoaBieuId(maMon, maLop)));
+					br.close();
+					if (check) {
+						JOptionPane.showMessageDialog(getContentPane(), "Successful!");
+						repaint();
+					}
+					else
+						JOptionPane.showMessageDialog(getContentPane(), "Fail!");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(getContentPane(), "Fail!");
+				} 
+			}
+		});
+		mainMenu.add(mntmNewMenuItem_1);
 		JMenu chonLop = new JMenu("Chọn Lớp");
 		menuBar.add(chonLop);
 		
@@ -171,6 +229,7 @@ public class Main extends JFrame {
         contentPanel.setLayout(new BorderLayout(0, 0));
         contentPanel.add(mainPanel);
         mainPanel.setLayout(new BorderLayout(0, 0));
+        mainPanel.add(panel);
         setContentPane(contentPanel);
 		
 		List<LopHoc> dsLop=LopHocDAO.getAll();
@@ -196,10 +255,20 @@ public class Main extends JFrame {
 			dsSinhVien.setHorizontalAlignment(SwingConstants.TRAILING);
 			itemLop.add(dsSinhVien);
 			
-			JMenuItem TKB= new JMenuItem("Thời khoá biểu"){
+			JMenuItem TKB= new JMenuItem("Thời khoá biểu");
+
+			TKB.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e) {
+					mainPanel.removeAll();
+			        mainPanel.repaint();
+			        mainPanel.revalidate();
+			        
+			        mainPanel.add(new ThoiKhoaBieuLop(MaLop),BorderLayout.CENTER);
+			        mainPanel.repaint();
+			        mainPanel.revalidate();
 			    }
-			};
+			});
 			dsSinhVien.setHorizontalAlignment(SwingConstants.TRAILING);
 			itemLop.add(TKB);
 		}
@@ -221,5 +290,9 @@ public class Main extends JFrame {
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		});
+	}
+	
+	public Main() {
+		this(new WelcomePanel());
 	}
 }
