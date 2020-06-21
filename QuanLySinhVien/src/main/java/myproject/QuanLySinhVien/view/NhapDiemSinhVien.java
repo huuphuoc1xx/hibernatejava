@@ -34,14 +34,14 @@ public class NhapDiemSinhVien extends JFrame {
 	private JFormattedTextField mssv;
 	private JTextField name;
 	private JLabel lblNewLabel_1;
-	private JFormattedTextField diemCK;
+	private InputNumber diemCK;
 	private JLabel lblNewLabel_2;
 	private JButton confirmButton;
 	private JButton cancelButton;
 	private JLabel lblNewLabel_4;
-	private JFormattedTextField diemGK;
-	private JFormattedTextField diemKhac;
-	private JFormattedTextField diemTong;
+	private InputNumber diemGK;
+	private InputNumber diemKhac;
+	private InputNumber diemTong;
 
 	public NhapDiemSinhVien(final String Mon, final int ms, String HoTen, float DiemGK, float DiemCK, float DiemKhac,
 			float DiemTong) {
@@ -67,13 +67,13 @@ public class NhapDiemSinhVien extends JFrame {
 
 		lblNewLabel_4 = new JLabel("Điểm GK");
 
-		diemGK = new JFormattedTextField(new InputNumberFormat(NumberFormat.getInstance()));
+		diemGK = new InputNumber();
 		diemGK.setColumns(10);
 		diemGK.setText("" + DiemGK);
 
 		lblNewLabel_2 = new JLabel("Điểm GK");
 
-		diemCK = new JFormattedTextField(new InputNumberFormat(NumberFormat.getInstance()));
+		diemCK = new InputNumber();
 		diemCK.setColumns(10);
 		diemCK.setText("" + DiemCK);
 
@@ -119,11 +119,11 @@ public class NhapDiemSinhVien extends JFrame {
 
 		JLabel lblDiemtong = new JLabel("Điểm Tổng");
 
-		diemKhac = new JFormattedTextField(new InputNumberFormat(NumberFormat.getInstance()));
+		diemKhac = new InputNumber();
 		diemKhac.setColumns(10);
 		diemKhac.setText("" + DiemKhac);
 
-		diemTong = new JFormattedTextField(new InputNumberFormat(NumberFormat.getInstance()));
+		diemTong = new InputNumber();
 		diemTong.setColumns(10);
 		diemTong.setText("" + DiemTong);
 		GroupLayout gl_cmnd = new GroupLayout(mainPanel);

@@ -87,7 +87,7 @@ public class DanhSachHocSinhTheoMon extends JPanel {
 					int check = JOptionPane.showConfirmDialog(DanhSachHocSinhTheoMon.this, new ThongTinSinhVien(hs),
 							"Xác nhận thêm?", JOptionPane.YES_NO_OPTION);
 					if (check == 0) {
-						DiemSoDAO.addScore(new DiemSo(new DiemSoId(Mon, ms)));
+						DiemSoDAO.addScore(new DiemSo(new DiemSoId(Mon, ms),0,0,0,0));
 						JOptionPane.showMessageDialog(DanhSachHocSinhTheoMon.this, "Thêm thành công");
 						getParent().repaint();
 						getParent().revalidate();
@@ -115,7 +115,7 @@ public class DanhSachHocSinhTheoMon extends JPanel {
 					int check = JOptionPane.showConfirmDialog(DanhSachHocSinhTheoMon.this, new ThongTinSinhVien(hs),
 							"Xác nhận thêm?", JOptionPane.YES_NO_OPTION);
 					if (check == 0) {
-						DiemSoDAO.deleteScore(new DiemSo(new DiemSoId(Mon, ms)));
+						DiemSoDAO.deleteScore(new DiemSo(new DiemSoId(Mon, ms),0,0,0,0));
 						JOptionPane.showMessageDialog(DanhSachHocSinhTheoMon.this, "Xoá thành công");
 						repaint();
 						revalidate();

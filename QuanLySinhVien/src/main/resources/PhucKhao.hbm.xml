@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Jun 21, 2020 8:42:32 PM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 21, 2020 10:12:59 PM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="QuanLySinhVien" dynamic-insert="false" dynamic-update="false" mutable="true" name="myproject.QuanLySinhVien.entities.PhucKhao" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="phuc_khao">
         <composite-id class="myproject.QuanLySinhVien.entities.PhucKhaoId" mapped="false" name="id" unsaved-value="undefined">
@@ -13,11 +13,11 @@
         <property generated="never" lazy="false" name="cotDiem" optimistic-lock="true" type="string" unique="false">
             <column length="8" name="CotDiem" not-null="true"/>
         </property>
-        <property generated="never" lazy="false" name="diemMongMuon" optimistic-lock="true" type="java.lang.Integer" unique="false">
-            <column name="DiemMongMuon"/>
+        <property generated="never" lazy="false" name="diemMongMuon" optimistic-lock="true" type="int" unique="false">
+            <column name="DiemMongMuon" not-null="true"/>
         </property>
         <property generated="never" lazy="false" name="lyDo" optimistic-lock="true" type="string" unique="false">
-            <column name="LyDo"/>
+            <column name="LyDo" not-null="true"/>
         </property>
         <property generated="never" lazy="false" name="ketQua" optimistic-lock="true" type="string" unique="false">
             <column length="10" name="KetQua" not-null="true"/>

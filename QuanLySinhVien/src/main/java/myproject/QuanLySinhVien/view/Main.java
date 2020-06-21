@@ -150,7 +150,7 @@ public class Main extends JFrame {
 						String PhongHoc =s[3];
 						list.add(new MonHoc(maMon,tenMon, PhongHoc,false));
 						for(HocSinh hs:lisths) {
-							ds.add(new DiemSo(new DiemSoId(maMon,hs.getMssv())));
+							ds.add(new DiemSo(new DiemSoId(maMon,hs.getMssv()),0,0,0,0));
 						}
 						tkb.add(new ThoiKhoaBieu(new ThoiKhoaBieuId(maMon,maLop)));
 					}

@@ -40,7 +40,7 @@ public class MainSinhVien extends JFrame {
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame donPhucKhao=new DonPhucKhao(hs);
-				donPhucKhao.setEnabled(true);
+				donPhucKhao.setVisible(true);
 			}
 		});
 		mntmNewMenuItem_1.setHorizontalAlignment(SwingConstants.LEFT);
