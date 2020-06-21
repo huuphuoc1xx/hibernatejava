@@ -84,6 +84,7 @@ public class BangDiem extends JPanel {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
+				setEnabled(false);
 				int mssv = Integer.parseInt((String) table.getValueAt(table.getSelectedRow(), 1));
 				String HoTen = (String) table.getValueAt(table.getSelectedRow(), 2);
 				float DiemGK = Float.parseFloat((String) table.getValueAt(table.getSelectedRow(), 3));
@@ -92,6 +93,7 @@ public class BangDiem extends JPanel {
 				float DiemTong = Float.parseFloat((String) table.getValueAt(table.getSelectedRow(), 6));
 				JFrame nhapDiemSinhVien = new NhapDiemSinhVien(Mon, mssv, HoTen, DiemGK, DiemCK, DiemKhac, DiemTong);
 				nhapDiemSinhVien.setVisible(true);
+				setEnabled(true);
 			}
 		});
 

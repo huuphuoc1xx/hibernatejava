@@ -1,5 +1,7 @@
 package myproject.QuanLySinhVien.entities;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -22,5 +24,20 @@ public class PhucKhaoDAO {
 		
 		return true;
 		
+	}
+
+	public static List<PhucKhao> getBySubject(String mon) {
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		List<PhucKhao> ds = null;
+		try {
+			String hql = "select pk from PhucKhao pk where pk.id.maMh=:maMon";
+			ds = session.createQuery(hql).setParameter("maMon", mon).getResultList();
+		} catch (HibernateException ex) {
+			ex.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return ds;
 	}
 }
