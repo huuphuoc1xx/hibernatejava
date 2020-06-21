@@ -11,7 +11,7 @@ public class AccountDAO {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		
 		try {
-			Account res=session.get(Account.class, user);
+			Account res=(Account) session.get("myproject.QuanLySinhVien.entities.Account", user);
 			return res;
 		} catch (HibernateException ex) {
 			ex.printStackTrace();

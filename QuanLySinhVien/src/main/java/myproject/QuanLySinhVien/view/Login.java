@@ -73,14 +73,15 @@ public class Login {
 				if (account == null)
 					JOptionPane.showMessageDialog(frame, "Invalid username!");
 
-				char[] pass = password.getPassword();
-
-				if (pass.toString().equals(account.getPassword())) {
-					if (account.getStatus()) {
+				String pass = String.copyValueOf(password.getPassword());
+				account.getPassword();
+				if (pass.equals(account.getPassword())) {
+					if (account.isStatus()) {
 						Main main = new Main();
 						main.setVisible(true);
 					}else {
-						
+						MainSinhVien main=new MainSinhVien(user);
+						main.setVisible(true);
 					}
 					frame.dispose();
 				} else {

@@ -31,6 +31,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class DonPhucKhao extends JFrame {
 
@@ -44,68 +46,21 @@ public class DonPhucKhao extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
 		
 		JLabel lblNewLabel = new JLabel("Mã môn");
-		contentPane.add(lblNewLabel, "2, 4, default, fill");
 		
 		MaMon = new JTextField();
-		contentPane.add(MaMon, "6, 4, 3, 1, fill, default");
 		MaMon.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cột điểm ");
-		contentPane.add(lblNewLabel_1, "2, 6, default, top");
 		
 		final JRadioButton gkBtn = new JRadioButton("Điểm GK");
-		contentPane.add(gkBtn, "6, 6");
 		
 		final JRadioButton ckBtn = new JRadioButton("Điểm CK");
-		contentPane.add(ckBtn, "8, 6");
 		
 		final JRadioButton khacBtn = new JRadioButton("Điểm Khác");
-		contentPane.add(khacBtn, "10, 6");
 		
 		final JRadioButton tongBtn = new JRadioButton("Điểm Tổng");
-		contentPane.add(tongBtn, "12, 6");
 		
 		ButtonGroup cotDiem = new ButtonGroup();
 		cotDiem.add(gkBtn);
@@ -113,21 +68,16 @@ public class DonPhucKhao extends JFrame {
 		cotDiem.add(khacBtn);
 		cotDiem.add(tongBtn);
 		JLabel lblNewLabel_3 = new JLabel("Điểm mong muốn");
-		contentPane.add(lblNewLabel_3, "2, 8");
 		
 		JFormattedTextField diemMM = new JFormattedTextField(new InputNumberFormat(NumberFormat.getInstance()));
-		contentPane.add(diemMM, "6, 8");
 		
 		JLabel lblNewLabel_4 = new JLabel("Lý do");
 		lblNewLabel_4.setVerticalAlignment(SwingConstants.TOP);
-		contentPane.add(lblNewLabel_4, "2, 10, default, top");
 		
 		JTextPane lyDo = new JTextPane();
 		lblNewLabel_4.setLabelFor(lyDo);
-		contentPane.add(lyDo, "6, 10, 6, 1, fill, fill");
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		contentPane.add(lblNewLabel_2, "2, 12");
 		
 		JButton btnNewButton = new JButton("Xác nhận");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -150,7 +100,71 @@ public class DonPhucKhao extends JFrame {
 				}
 			}
 		});
-		contentPane.add(btnNewButton, "8, 12");
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+							.addGap(31)
+							.addComponent(MaMon, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+							.addGap(31)
+							.addComponent(gkBtn)
+							.addGap(6)
+							.addComponent(ckBtn, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(khacBtn)
+							.addGap(6)
+							.addComponent(tongBtn))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_3)
+							.addGap(31)
+							.addComponent(diemMM, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+							.addGap(31)
+							.addComponent(lyDo, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+							.addGap(102)
+							.addComponent(btnNewButton))))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(31)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(MaMon, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_1)
+						.addComponent(gkBtn)
+						.addComponent(ckBtn)
+						.addComponent(khacBtn)
+						.addComponent(tongBtn))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(3)
+							.addComponent(lblNewLabel_3))
+						.addComponent(diemMM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_4)
+						.addComponent(lyDo, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(lblNewLabel_2))
+						.addComponent(btnNewButton)))
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
 
 }

@@ -94,8 +94,8 @@ public class DiemSoDAO {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		List<DiemSo> ds = null;
 		try {
-			String hql = "select ds from DiemSo ds where Mssv=:mssv";
-			ds = session.createQuery(hql).setParameter("Mssv", mssv).getResultList();
+			String hql = "select ds from DiemSo ds where id.mssv=:mssv";
+			ds = session.createQuery(hql).setParameter("mssv", mssv).getResultList();
 		} catch (HibernateException ex) {
 			ex.printStackTrace();
 		} finally {

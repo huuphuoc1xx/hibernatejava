@@ -15,6 +15,7 @@
   <mapping class="myproject.QuanLySinhVien.entities.MonHoc"/>
   <mapping class="myproject.QuanLySinhVien.entities.ThoiKhoaBieu"/>
   <mapping class="myproject.QuanLySinhVien.entities.PhucKhao"/>
+  <mapping class="myproject.QuanLySinhVien.entities.Account"/>
   
   <mapping resource="DiemSo.hbm.xml"/>
   <mapping resource="HocSinh.hbm.xml"/>
@@ -22,5 +23,6 @@
   <mapping resource="MonHoc.hbm.xml"/>
   <mapping resource="PhucKhao.hbm.xml"/>
   <mapping resource="ThoiKhoaBieu.hbm.xml"/>
+  <mapping resource="Account.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

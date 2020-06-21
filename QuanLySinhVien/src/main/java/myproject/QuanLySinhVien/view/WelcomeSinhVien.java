@@ -84,6 +84,7 @@ public class WelcomeSinhVien extends JPanel {
 
 
 		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setEnabled(false);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblNewLabel, -6, SpringLayout.NORTH, scrollPane);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 40, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 0, SpringLayout.SOUTH, this);
