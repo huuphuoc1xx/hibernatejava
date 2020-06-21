@@ -42,6 +42,41 @@ public class MonHocDAO {
 
 		return ds;
 	}
+
+
+	public static MonHoc getByMaMon(String mon) {
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		
+		try {
+			MonHoc res=session.get(MonHoc.class, mon);
+			return res;
+		} catch (HibernateException ex) {
+			System.err.println(ex);
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
+
+	public static boolean addSubject(MonHoc mh) {
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction=session.beginTransaction();
+		try {
+			session.saveOrUpdate(mh);
+			transaction.commit();
+		}catch(HibernateException e){
+			transaction.rollback();
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			session.close();
+		}
+		
+		return true;
+		
+	}
 	
 
 }

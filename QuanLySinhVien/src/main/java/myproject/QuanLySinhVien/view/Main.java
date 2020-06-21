@@ -148,7 +148,7 @@ public class Main extends JFrame {
 						String maMon=s[1];
 						String tenMon = s[2];
 						String PhongHoc =s[3];
-						list.add(new MonHoc(maMon,tenMon, PhongHoc));
+						list.add(new MonHoc(maMon,tenMon, PhongHoc,false));
 						for(HocSinh hs:lisths) {
 							ds.add(new DiemSo(new DiemSoId(maMon,hs.getMssv())));
 						}
@@ -222,6 +222,15 @@ public class Main extends JFrame {
 			}
 		});
 		mainMenu.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Đăng xuất");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login.main(null);
+				dispose();
+			}
+		});
+		mainMenu.add(mntmNewMenuItem_2);
 		JMenu chonLop = new JMenu("Chọn Lớp");
 		menuBar.add(chonLop);
 		
@@ -293,6 +302,6 @@ public class Main extends JFrame {
 	}
 	
 	public Main() {
-		this(new WelcomePanel());
+		this(new WelcomeTeacher());
 	}
 }

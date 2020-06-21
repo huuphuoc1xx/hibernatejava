@@ -48,7 +48,7 @@ public class ThemSinhVien extends JFrame {
 	private JTextField maLop;
 
 	public ThemSinhVien() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		mainPanel = new JPanel();
 		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -200,5 +200,4 @@ public class ThemSinhVien extends JFrame {
 		mainPanel.setLayout(gl_cmnd);
 
 	}
-
 }

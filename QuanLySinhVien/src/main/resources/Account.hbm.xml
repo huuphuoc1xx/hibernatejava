@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 21, 2020 2:09:50 PM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="QuanLySinhVien" dynamic-insert="false" dynamic-update="false" mutable="true" name="myproject.QuanLySinhVien.entities.Account" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="account">
+        <id name="username" type="string">
+            <column length="50" name="Username"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="password" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="Password"/>
+        </property>
+        <property generated="never" lazy="false" name="status" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="Status"/>
+        </property>
+        <property generated="never" lazy="false" name="mssv" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="Mssv" unique="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

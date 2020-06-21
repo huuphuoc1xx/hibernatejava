@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Jun 17, 2020 11:17:35 PM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 21, 2020 12:03:16 PM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="QuanLySinhVien" dynamic-insert="false" dynamic-update="false" mutable="true" name="myproject.QuanLySinhVien.entities.MonHoc" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="mon_hoc">
         <id name="maMon" type="string">
@@ -11,6 +11,12 @@
         </property>
         <property generated="never" lazy="false" name="phongHoc" optimistic-lock="true" type="string" unique="false">
             <column length="5" name="PhongHoc" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="phucKhao" optimistic-lock="true" type="boolean" unique="false">
+            <column name="PhucKhao" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="deadLine" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="DeadLine"/>
         </property>
     </class>
 </hibernate-mapping>

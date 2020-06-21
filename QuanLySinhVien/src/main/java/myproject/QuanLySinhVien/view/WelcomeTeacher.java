@@ -9,12 +9,12 @@ import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import java.awt.GridLayout;
 
-public class WelcomePanel extends JPanel {
+public class WelcomeTeacher extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public WelcomePanel() {
+	public WelcomeTeacher() {
 		setBackground(Color.ORANGE);
 		setLayout(new GridLayout(0, 1, 0, 0));
 		

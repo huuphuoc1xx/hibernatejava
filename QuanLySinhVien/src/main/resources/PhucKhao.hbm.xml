@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated Jun 17, 2020 11:17:35 PM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 21, 2020 12:03:16 PM by Hibernate Tools 5.4.14.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="QuanLySinhVien" dynamic-insert="false" dynamic-update="false" mutable="true" name="myproject.QuanLySinhVien.entities.PhucKhao" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="phuc_khao">
         <composite-id class="myproject.QuanLySinhVien.entities.PhucKhaoId" mapped="false" name="id" unsaved-value="undefined">
@@ -21,6 +21,12 @@
         </property>
         <property generated="never" lazy="false" name="ketQua" optimistic-lock="true" type="string" unique="false">
             <column length="10" name="KetQua" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="start" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="Start"/>
+        </property>
+        <property generated="never" lazy="false" name="finish" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="Finish"/>
         </property>
     </class>
 </hibernate-mapping>
