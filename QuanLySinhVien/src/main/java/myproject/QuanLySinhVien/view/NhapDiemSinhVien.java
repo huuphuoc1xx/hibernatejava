@@ -43,7 +43,7 @@ public class NhapDiemSinhVien extends JFrame {
 	private InputNumber diemKhac;
 	private InputNumber diemTong;
 
-	public NhapDiemSinhVien(final String Mon, final int ms, String HoTen, float DiemGK, float DiemCK, float DiemKhac,
+	public NhapDiemSinhVien(final String Lop,final String Mon, final int ms, String HoTen, float DiemGK, float DiemCK, float DiemKhac,
 			float DiemTong) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -97,6 +97,8 @@ public class NhapDiemSinhVien extends JFrame {
 					boolean check = DiemSoDAO.addScore(ds);
 					if (check) {
 						JOptionPane.showMessageDialog(getContentPane(), "Nhập điểm thành công!");
+						Main main=new Main(new BangDiem(Lop,Mon));
+						main.setVisible(true);
 						dispose();
 					} else
 						JOptionPane.showMessageDialog(getContentPane(), "Nhập điểm thất bại!");

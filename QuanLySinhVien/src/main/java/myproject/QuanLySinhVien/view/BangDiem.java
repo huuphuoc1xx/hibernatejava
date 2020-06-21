@@ -1,6 +1,7 @@
 package myproject.QuanLySinhVien.view;
 
 import java.awt.Font;
+import java.awt.Window;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -37,7 +38,7 @@ public class BangDiem extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public BangDiem(String Lop, final String Mon) {
+	public BangDiem(final String Lop, final String Mon) {
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 
@@ -51,7 +52,8 @@ public class BangDiem extends JPanel {
 		DefaultTableModel defaultTableModel = new DefaultTableModel();
 		defaultTableModel.setColumnIdentifiers(columnNames);
 		table = new JTable(defaultTableModel);
-		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		table.setRowSelectionAllowed(false);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		List<DiemSo> list = DiemSoDAO.getBySubject(Mon);
 		int hsDau = 0;
@@ -84,16 +86,15 @@ public class BangDiem extends JPanel {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				setEnabled(false);
 				int mssv = Integer.parseInt((String) table.getValueAt(table.getSelectedRow(), 1));
 				String HoTen = (String) table.getValueAt(table.getSelectedRow(), 2);
 				float DiemGK = Float.parseFloat((String) table.getValueAt(table.getSelectedRow(), 3));
 				float DiemCK = Float.parseFloat((String) table.getValueAt(table.getSelectedRow(), 4));
 				float DiemKhac = Float.parseFloat((String) table.getValueAt(table.getSelectedRow(), 5));
 				float DiemTong = Float.parseFloat((String) table.getValueAt(table.getSelectedRow(), 6));
-				JFrame nhapDiemSinhVien = new NhapDiemSinhVien(Mon, mssv, HoTen, DiemGK, DiemCK, DiemKhac, DiemTong);
+				JFrame nhapDiemSinhVien = new NhapDiemSinhVien(Lop,Mon, mssv, HoTen, DiemGK, DiemCK, DiemKhac, DiemTong);
 				nhapDiemSinhVien.setVisible(true);
-				setEnabled(true);
+				SwingUtilities.getWindowAncestor(BangDiem.this).dispose();
 			}
 		});
 
