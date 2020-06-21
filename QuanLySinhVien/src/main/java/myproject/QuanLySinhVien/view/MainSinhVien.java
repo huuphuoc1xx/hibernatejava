@@ -15,11 +15,13 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 import myproject.QuanLySinhVien.entities.HocSinh;
+import myproject.QuanLySinhVien.entities.HocSinhDAO;
 public class MainSinhVien extends JFrame {
 
 	private JPanel contentPane;
 
-	public MainSinhVien(HocSinh hs) {
+	public MainSinhVien(final String username) {
+		final HocSinh hs=HocSinhDAO.getByUsername(username);
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		;
@@ -35,6 +37,12 @@ public class MainSinhVien extends JFrame {
 		menuBar.add(mainMenu);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Phúc khảo");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame donPhucKhao=new DonPhucKhao(hs);
+				donPhucKhao.setEnabled(true);
+			}
+		});
 		mntmNewMenuItem_1.setHorizontalAlignment(SwingConstants.LEFT);
 		mainMenu.add(mntmNewMenuItem_1);
 
@@ -45,6 +53,10 @@ public class MainSinhVien extends JFrame {
 				dispose();
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Đổi mật khẩu");
+		mntmNewMenuItem_2.setHorizontalAlignment(SwingConstants.LEFT);
+		mainMenu.add(mntmNewMenuItem_2);
 		mntmNewMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
 		mainMenu.add(mntmNewMenuItem);
 		JPanel contentPanel = new WelcomeSinhVien(hs);

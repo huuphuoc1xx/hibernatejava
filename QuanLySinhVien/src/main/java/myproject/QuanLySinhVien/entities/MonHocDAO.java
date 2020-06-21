@@ -35,7 +35,7 @@ public class MonHocDAO {
 			String hql = "select mh from ThoiKhoaBieu tkb left join MonHoc mh on tkb.id.maMon=mh.maMon where MaLop=:Lop";
 			ds = session.createQuery(hql).setParameter("Lop", Lop).getResultList();
 		} catch (HibernateException ex) {
-			System.err.println(ex);
+			ex.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -51,7 +51,7 @@ public class MonHocDAO {
 			MonHoc res=session.get(MonHoc.class, mon);
 			return res;
 		} catch (HibernateException ex) {
-			System.err.println(ex);
+			ex.printStackTrace();
 		} finally {
 			session.close();
 		}

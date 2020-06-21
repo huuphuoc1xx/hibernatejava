@@ -22,7 +22,7 @@ public class LopHocDAO {
 			String hql = "select lh from myproject.QuanLySinhVien.entities.LopHoc lh";
 			ds = session.createQuery(hql).getResultList();
 		} catch (HibernateException ex) {
-			System.err.println(ex);
+			ex.printStackTrace();
 		} finally {
 			session.close();
 		}

@@ -30,7 +30,7 @@ public class ThoiKhoaBieuDAO {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction=session.beginTransaction();
 		try {
-				session.save(tkb);
+				session.saveOrUpdate(tkb);
 				transaction.commit();
 		}catch(HibernateException e){
 			transaction.rollback();

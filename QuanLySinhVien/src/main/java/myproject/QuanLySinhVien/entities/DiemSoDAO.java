@@ -33,7 +33,7 @@ public class DiemSoDAO {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction=session.beginTransaction();
 		try {
-				session.save(ds);
+				session.saveOrUpdate(ds);
 				transaction.commit();
 		}catch(HibernateException e){
 			transaction.rollback();
@@ -81,7 +81,7 @@ public class DiemSoDAO {
 			String hql = "select ds from DiemSo ds where MaMh=:Mon";
 			ds = session.createQuery(hql).setParameter("Mon", Mon).getResultList();
 		} catch (HibernateException ex) {
-			System.err.println(ex);
+			ex.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -97,7 +97,7 @@ public class DiemSoDAO {
 			String hql = "select ds from DiemSo ds where Mssv=:mssv";
 			ds = session.createQuery(hql).setParameter("Mssv", mssv).getResultList();
 		} catch (HibernateException ex) {
-			System.err.println(ex);
+			ex.printStackTrace();
 		} finally {
 			session.close();
 		}

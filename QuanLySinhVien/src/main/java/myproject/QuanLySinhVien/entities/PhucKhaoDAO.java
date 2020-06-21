@@ -9,7 +9,7 @@ public class PhucKhaoDAO {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction=session.beginTransaction();
 		try {
-				session.save(pk);
+				session.saveOrUpdate(pk);
 				transaction.commit();
 		}catch(HibernateException e){
 			transaction.rollback();
